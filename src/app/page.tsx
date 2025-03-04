@@ -1,25 +1,22 @@
-export default function Home() {
+// src/app/page.tsx
+
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <h1 className="text-4xl font-bold text-center">
-          ¡Bienvenido a apoapps.net (sexo) !
-        </h1>
-        <p className="text-lg text-center">
-          Esta página aún está en construcción. ¡Estén atentos para las novedades!
-        </p>
-        <p className="text-sm text-center">
-          Mientras tanto, puedes acceder a la versión legacy en:{" "}
-          <a
-            href="https://apodapps.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
-          >
-            https://apodapps.com 
-          </a>
-        </p>
-      </main>
-    </div>
-  ); 
+    <section className="container mx-auto px-4 py-6">
+      <h1 className="text-4xl font-bold mb-6">Apoapps</h1>
+
+      <h2 className="text-2xl font-semibold mb-4">Proyectos</h2>
+      <ul className="space-y-4">
+        <li className="border border-gray-200 rounded p-4 hover:bg-gray-50 transition">
+          <h3 className="text-lg font-bold">Tri-Go Math</h3>
+          <p className="text-sm text-gray-500">App de matemáticas para...</p>
+        </li>
+        <li className="border border-gray-200 rounded p-4 hover:bg-gray-50 transition">
+          <h3 className="text-lg font-bold">WakeUp</h3>
+          <p className="text-sm text-gray-500">App de sueños y hábitos de sueño...</p>
+        </li>
+        {/* Agrega más proyectos si deseas */}
+      </ul>
+    </section>
+  );
 }
