@@ -1,22 +1,55 @@
-// src/app/page.tsx
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import Image from "next/image";
 
 export default function HomePage() {
   return (
     <section className="container mx-auto px-4 py-6">
-      <h1 className="text-4xl font-bold mb-6">Apoapps</h1>
+      <h1 className="text-3xl font-bold mb-6 mt-6 ml-2">Proyectos</h1>
 
-      <h2 className="text-2xl font-semibold mb-4">Proyectos</h2>
-      <ul className="space-y-4">
-        <li className="border border-gray-200 rounded p-4 hover:bg-gray-50 transition">
-          <h3 className="text-lg font-bold">Tri-Go Math</h3>
-          <p className="text-sm text-gray-500">App de matemáticas para...</p>
-        </li>
-        <li className="border border-gray-200 rounded p-4 hover:bg-gray-50 transition">
-          <h3 className="text-lg font-bold">WakeUp</h3>
-          <p className="text-sm text-gray-500">App de sueños y hábitos de sueño...</p>
-        </li>
-        {/* Agrega más proyectos si deseas */}
-      </ul>
+      {/* Grid responsive: 1 columna en móvil, 2 en tablet, 3 en desktop */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Tri-Go Math */}
+        <Card className="rounded-2xl bg-card border border-border shadow-sm hover:bg-muted transition">
+          <CardHeader className="flex flex-col items-center text-center">
+            <Image src="/trigomath.webp" alt="Tri-Go Math" width={60} height={60} />
+            <CardTitle className="mt-4 text-lg">Tri-Go Math</CardTitle>
+            <CardDescription>Tu kit de matemáticas</CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col items-center">
+            <p className="text-sm text-muted-foreground">Plataformas Disponibles:</p>
+            <div className="flex gap-2 mt-2">
+              <button className="px-3 py-1 rounded-lg bg-secondary text-secondary-foreground">
+                iOS
+              </button>
+              <button className="px-3 py-1 rounded-lg bg-secondary text-secondary-foreground">
+                Android
+              </button>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* WakeUp */}
+        <Card className="rounded-2xl bg-card border border-border shadow-sm hover:bg-muted transition">
+          <CardHeader className="flex flex-col items-center text-center">
+            <Image src="/wakeup.webp" alt="WakeUp" width={60} height={60} />
+            <CardTitle className="mt-4 text-lg">WakeUp</CardTitle>
+            <CardDescription>Tu calculadora de sueño</CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col items-center">
+            <p className="text-sm text-muted-foreground">Plataformas Disponibles:</p>
+            <div className="flex gap-2 mt-2">
+              <button className="px-3 py-1 rounded-lg bg-secondary text-secondary-foreground">
+                iOS
+              </button>
+              <button className="px-3 py-1 rounded-lg bg-secondary text-secondary-foreground">
+                Android
+              </button>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Puedes agregar más proyectos aquí */}
+      </div>
     </section>
   );
 }

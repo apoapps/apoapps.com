@@ -1,15 +1,21 @@
 // src/app/layout.tsx
-import { Navbar } from "@/components/ui/navbar";
-import "@/app/globals.css"; // tu CSS global
+import { Navbar } from "@/components/Navbar";
+import "@/app/globals.css"; // Tu CSS global
+import { ThemeProvider } from "next-themes";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="bg-gray-50">
-        <Navbar />
-        {/* pt-16 para compensar la Navbar fija */}
-        <main className="pt-16">{children}</main>
-      </body>
-    </html>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+      </head>
+      <body className="bg-background text-foreground">
+                <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange >
+
+          <Navbar />
+          <main>{children}</main>
+          </ThemeProvider>
+        </body>
+
+      </html>
   );
 }
