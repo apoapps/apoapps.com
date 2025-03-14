@@ -1,6 +1,5 @@
 "use client"; // Asegúrate de que esta línea esté al inicio
 
-import Image from "next/image";
 import ProjectsCard from "@/components/ProjectsCard";
 import StackedMockup from "@/components/StackedMockup";
 
