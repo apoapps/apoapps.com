@@ -18,7 +18,7 @@ export default function StackedMockup({ screenshots = [] }: StackedMockupProps) 
 
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % screenshots.length);
-    }, 5000);
+    }, 50000);
 
     return () => clearInterval(interval);
   }, [screenshots, hasScreenshots]);

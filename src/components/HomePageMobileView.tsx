@@ -11,6 +11,9 @@ export default function HomePageMobileView() {
   // Estado para manejar el scroll (para el blur)
   const [scrollY, setScrollY] = useState(0);
 
+  // Altura del navbar (ajústalo según el tamaño real del navbar)
+  const NAVBAR_HEIGHT = 60;
+
   // Activamos la animación inicial al montar
   useEffect(() => {
     const timer = setTimeout(() => setStartAnim(true), 200);
@@ -32,78 +35,76 @@ export default function HomePageMobileView() {
   };
 
   // --- Animación Celular ---
-  // Empieza en -100px → a 0px cuando startAnim es true
-  const phoneTransform = startAnim ? "translateY(0px)" : "translateY(-10px)";
+  const phoneTransform = startAnim ? "translateY(25vh)" : "translateY(23vh)";
 
   // Blur inicial pronto (scroll * 0.15), máx 30
-  const maxBlur = 5;
-  const blurVal = Math.min((scrollY + 0.5) * 3, maxBlur).toFixed(0);
-  const phoneBlur = `blur(${blurVal}px)`;
+  const maxBlur = 3;
+  //const blurVal = Math.min(((scrollY + 0.1)) + 1, maxBlur).toFixed(0);
+  const phoneBlur = `blur(${maxBlur}px)`;
 
   // --- Animación Texto ---
-  // Empieza en +100px → a 0px
-  // Ajusta a tu gusto (aún más si quieres un efecto mayor)
-  const textTransform = startAnim ? "translateY(-300px)" : "translateY(-200px)";
+  const textTransform = startAnim ? "translateY(-30vh)" : "translateY(-28vh)";
 
   return (
-    <main className="space-y-10">
-      {/* Hero / Intro Block */}
-      <section className="container h-170 bg-[#0a0e1a]  mx-auto px-4 py-8 bg-black dark:bg-black">
-        {/* Contenedor principal con flex-col-reverse
-            para que el texto quede sobre (arriba en el DOM) */}
-        <div className="flex flex-col-reverse items-center gap-8">
-          {/* Texto animado */}
-          <div
-            className="w-full space-y-4 z-10 text-left px-4"
-            style={{
-              transition: "transform 1s ease-out",
-              transform: textTransform,
-            }}
+    <main className=" h-screen ">
+      {/* Sección 1: Hero / Intro Block */}
+      <section
+        className="relative w-full px-4 flex flex-col-reverse items-center gap-8 bg-[#0a0e1a] dark:bg-black snap-start"
+        style={{ height: `calc(100vh - ${NAVBAR_HEIGHT}px)` }} // Ajusta altura del viewport menos el navbar
+      >
+        {/* Texto animado */}
+        <div
+          className="w-full space-y-4 z-10 text-left px-4"
+          style={{
+            transition: "transform 1s ease-out",
+            transform: textTransform,
+          }}
+        >
+          <h1 className="text-4xl font-extrabold leading-tight text-white text-left">
+            Bringing Ideas To Life
+          </h1>
+          <p className="text-lg text-muted-foreground text-white">
+            At Apoapps, we build solutions that empower thousands of students
+            and improve their daily lives around the world.
+          </p>
+          <button
+            onClick={scrollToProjects}
+            className="px-4 py-2 mt-4 bg-secondary text-secondary-foreground rounded-md hover:opacity-90"
           >
-            <h1 className="text-4xl font-extrabold leading-tight text-white text-left">
-              Bringing Ideas To Life
-            </h1>
-            <p className="text-lg text-muted-foreground text-white">
-              At Apoapps, we build solutions that empower thousands of students
-              and improve their daily lives around the world.
-            </p>
-            <button
-              onClick={scrollToProjects}
-              className="px-4 py-2 mt-4 bg-secondary text-secondary-foreground rounded-md hover:opacity-90"
-            >
-              Learn More
-            </button>
-          </div>
+            Learn More
+          </button>
+        </div>
 
-          {/* Celular animado + blur */}
-          <div
-            className="w-full flex justify-center overflow-hidden z-0"
-            style={{
-              transition: "transform 1s ease-out",
-              transform: phoneTransform,
-              filter: phoneBlur,
-            }}
-          >
-            <StackedMockup
-              screenshots={[
-                "/trigo-ss1.jpeg",
-                "/ss1.PNG",
-                "/ss2.PNG",
-                "/ss3.PNG",
-                "/ss4.PNG",
-
-
-              ]}
-            />
-          </div>
+        {/* Celular animado + blur */}
+        <div
+          className="w-full flex justify-center  z-0"
+          style={{
+            transition: "transform 1s ease-out",
+            transform: phoneTransform,
+            filter: phoneBlur,
+          }}
+        >
+          <StackedMockup
+            screenshots={[
+              "/trigo-ss1.jpeg",
+              "/ss1.PNG",
+              "/ss2.PNG",
+              "/ss3.PNG",
+              "/ss4.PNG",
+            ]}
+          />
         </div>
       </section>
 
-      <Separator className="my-4" />
+      <Separator className="mb-8 " />
 
-      {/* Popular Projects Block */}
-      <section id="popular-projects" className="container mx-auto px-4">
-        <h2 className="text-2xl font-bold mb-4">Popular Projects</h2>
+      {/* Sección 2: Popular Projects */}
+      <section
+        id="popular-projects"
+        className="container mx-auto px-4 snap-start"
+      //style={{ height: `calc(90vh - ${NAVBAR_HEIGHT}px)` }} // Ajusta altura del viewport menos el navbar
+      >
+        <h2 className="text-2xl font-bold mb-4 mt-8">Popular Projects</h2>
         <div className="grid grid-cols-1 gap-6">
           <ProjectsCard
             title="Tri-Go Math"
@@ -122,19 +123,23 @@ export default function HomePageMobileView() {
         </div>
       </section>
 
-      <Separator className="my-4" />
+      <Separator className="my-8" />
 
-      {/* Final CTA Block */}
-      <section className="container mx-auto px-4 py-8">
+      {/* Sección 3: Final CTA Block */}
+      <section
+        className="container mx-auto px-4 py-8 snap-start"
+        style={{ height: `calc(40vh - ${NAVBAR_HEIGHT}px)` }}
+      >
         <div className="text-center space-y-4">
-          <h3 className="text-2xl font-bold">Looking for a solution?</h3>
-          <p className="text-sm text-muted-foreground">
+          <h2 className="text-2xl font-bold mb-4 mt-8 text-left">Looking for a solution?</h2>
+
+          <p className="text-sm text-muted-foreground text-left">
             We can develop the right app or tool for you.
           </p>
-          <p className="text-sm">
+          <p className="text-sm text-left">
             Contact us at{" "}
-            <a href="mailto:alex@apoapps.net" className="underline">
-              alex@apoapps.net
+            <a href="mailto:alex@apoapps.net" className="underline text-left">
+              contact@apoapps.net
             </a>
           </p>
         </div>

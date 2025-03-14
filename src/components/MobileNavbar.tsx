@@ -14,8 +14,8 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 
 function MobileNavbar() {
-  const [showMobileMenu, setShowMobileMenu] = useState(false); 
-  const { theme, setTheme } = useTheme(); 
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   // Función para cerrar el menú cuando se hace clic en un enlace
   const handleCloseMenu = () => {
@@ -48,7 +48,7 @@ function MobileNavbar() {
             <SheetTitle>Menu</SheetTitle>
           </SheetHeader>
           <nav className="flex flex-col space-y-4 mt-6">
-             <Button
+            <Button
               variant="outline"
               className="flex items-center gap-3 justify-start mx-6 align-center"
               asChild
