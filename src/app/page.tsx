@@ -9,14 +9,14 @@ export default function HomePage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <ProjectsCard 
           title="Tri-Go Math"
-          description="Tu kit de matemáticas"
+          shortDescription="Tu kit de matemáticas"
           imageSrc="/trigomath.webp"
           iosLink="https://apps.apple.com/app/trigo-math"
           androidLink="https://play.google.com/store/apps/details?id=com.trigomath"
         />
         <ProjectsCard 
           title="WakeUp"
-          description="Tu calculadora de sueño"
+          shortDescription="Tu calculadora de sueño"
           imageSrc="/wakeup.webp"
           iosLink="https://apps.apple.com/app/wakeup"
           androidLink="https://play.google.com/store/apps/details?id=com.wakeup"
