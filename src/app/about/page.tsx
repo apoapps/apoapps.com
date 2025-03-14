@@ -33,21 +33,28 @@ export default function AboutMeCard() {
       <Card className="overflow-hidden border-none shadow-xl bg-gradient-to-br from-background to-muted/50">
         <CardContent className="p-0">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-            {/* Profile Section */}
+            {/* Sección de perfil */}
             <div className="relative p-6 md:p-8 flex flex-col items-center text-center border-b md:border-b-0 md:border-r border-border/50">
               <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-primary/20 mb-6 shadow-lg"
+                initial={{ translateY: 10, opacity: 0 }}
+                animate={{ translateY: 0, opacity: 1 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-primary/20 mb-6 shadow-lg will-change-transform"
               >
-                <Image src="/apodaca.jpeg" alt="Alejandro Apodaca Córdova" fill className="object-cover" priority />
+                <Image
+                  src="/apodaca.jpeg"
+                  alt="Alejandro Apodaca Córdova"
+                  fill
+                  className="object-contain"
+                  priority
+                />
               </motion.div>
 
               <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
+                initial={{ translateY: 10, opacity: 0 }}
+                animate={{ translateY: 0, opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
+                className="will-change-transform"
               >
                 <h1 className="text-2xl font-bold">Alejandro Apodaca Córdova</h1>
                 <div className="flex items-center justify-center gap-2 mt-2">
@@ -72,7 +79,7 @@ export default function AboutMeCard() {
               </motion.div>
             </div>
 
-            {/* Content Section */}
+            {/* Sección de contenido */}
             <div className="col-span-1 md:col-span-2 p-6 md:p-8">
               <Tabs defaultValue="about" className="w-full">
                 <TabsList className="grid w-full grid-cols-2 mb-6">
@@ -138,13 +145,6 @@ export default function AboutMeCard() {
                           <Github className="w-4 h-4 mr-2" /> GitHub
                         </Link>
                       </Button>
-                    </div>
-
-                    <div className="mt-4 p-4 bg-muted rounded-lg">
-                      <p className="text-sm text-muted-foreground">
-                        Looking for collaboration opportunities or have a project in mind? I'm always open to discussing
-                        new ideas and challenges.
-                      </p>
                     </div>
                   </motion.div>
                 </TabsContent>
