@@ -1,4 +1,3 @@
-// src/components/MobileNavbar.tsx
 "use client";
 
 import { MenuIcon, SunIcon, MoonIcon } from "lucide-react";
@@ -15,11 +14,17 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 
 function MobileNavbar() {
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const [showMobileMenu, setShowMobileMenu] = useState(false); 
+  const { theme, setTheme } = useTheme(); 
+
+  // Función para cerrar el menú cuando se hace clic en un enlace
+  const handleCloseMenu = () => {
+    setShowMobileMenu(false);
+  };
 
   return (
     <div className="flex md:hidden items-center space-x-2">
+      {/* Botón para cambiar de tema */}
       <Button
         variant="ghost"
         size="icon"
@@ -31,6 +36,7 @@ function MobileNavbar() {
         <span className="sr-only">Toggle theme</span>
       </Button>
 
+      {/* Menú desplegable */}
       <Sheet open={showMobileMenu} onOpenChange={setShowMobileMenu}>
         <SheetTrigger asChild>
           <Button variant="ghost" size="icon">
@@ -42,11 +48,22 @@ function MobileNavbar() {
             <SheetTitle>Menu</SheetTitle>
           </SheetHeader>
           <nav className="flex flex-col space-y-4 mt-6">
-            <Button variant="ghost" className="flex items-center gap-3 justify-start" asChild>
+             <Button
+              variant="outline"
+              className="flex items-center gap-3 justify-start mx-6 align-center"
+              asChild
+              onClick={handleCloseMenu}
+            >
+              <Link href="/">Home</Link>
+            </Button>
+            <Button
+              variant="outline"
+              className="flex items-center gap-3 justify-start mx-6"
+              asChild
+              onClick={handleCloseMenu}
+            >
               <Link href="/about">About</Link>
             </Button>
-
-           
           </nav>
         </SheetContent>
       </Sheet>
