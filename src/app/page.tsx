@@ -1,11 +1,18 @@
-// app/(site)/page.tsx o pages/index.tsx (según tu estructura)
+"use client"; // Asegúrate de que esta línea esté al inicio
+
 import Image from "next/image";
 import ProjectsCard from "@/components/ProjectsCard";
 import StackedMockup from "@/components/StackedMockup";
 
-
-
 export default function HomePage() {
+  // Función para hacer scroll a "Popular Projects"
+  const scrollToProjects = () => {
+    const section = document.getElementById("popular-projects");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <main className="space-y-20">
       {/* Hero / Intro Block */}
@@ -19,7 +26,10 @@ export default function HomePage() {
             At Apoapps, we build solutions that empower thousands of students 
             and improve their daily lives around the world.
           </p>
-          <button className="px-4 py-2 mt-4 bg-secondary text-secondary-foreground rounded-md hover:opacity-90">
+          <button 
+            onClick={scrollToProjects} 
+            className="px-4 py-2 mt-4 bg-secondary text-secondary-foreground rounded-md hover:opacity-90"
+          >
             Learn More
           </button>
         </div>
@@ -31,7 +41,7 @@ export default function HomePage() {
       </section>
 
       {/* Popular Projects Block */}
-      <section className="container mx-auto px-4">
+      <section id="popular-projects" className="container mx-auto px-4">
         <h2 className="text-2xl font-bold mb-6">Popular Projects</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           <ProjectsCard
