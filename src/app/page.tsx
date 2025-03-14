@@ -1,6 +1,9 @@
-// app/(site)/page.tsx o pages/index.tsx (dependiendo de tu setup de rutas)
+// app/(site)/page.tsx o pages/index.tsx (según tu estructura)
 import Image from "next/image";
 import ProjectsCard from "@/components/ProjectsCard";
+import StackedMockup from "@/components/StackedMockup";
+
+
 
 export default function HomePage() {
   return (
@@ -21,16 +24,9 @@ export default function HomePage() {
           </button>
         </div>
 
-        {/* Imagen placeholder (celular u otro) */}
+        {/* Bloque de iPhone con Screenshot en modo “Stack” */}
         <div className="md:w-1/2 flex justify-center">
-          {/* Ajusta la ruta y tamaños a tu gusto */}
-          <Image
-            src="/placeholder-phone.png"
-            alt="Placeholder Phone"
-            width={300}
-            height={600}
-            className="rounded-xl"
-          />
+          <StackedMockup />
         </div>
       </section>
 
