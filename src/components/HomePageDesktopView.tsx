@@ -22,7 +22,7 @@ export default function HomePageDesktopView() {
             Bringing Ideas To Life
           </h1>
           <p className="text-lg text-muted-foreground">
-            At Apoapps, we build solutions that empower thousands of students 
+            At Apoapps, we build solutions that empower thousands of students
             and improve their daily lives around the world.
           </p>
           <button
@@ -35,7 +35,17 @@ export default function HomePageDesktopView() {
 
         {/* Columna iPhone, sin parallax ni blur */}
         <div className="w-1/2 flex justify-center">
-          <StackedMockup />
+          <StackedMockup
+            screenshots={[
+              "/trigo-ss1.jpeg",
+              "/ss1.PNG",
+              "/ss2.PNG",
+              "/ss3.PNG",
+              "/ss4.PNG",
+
+
+            ]}
+          />
         </div>
       </section>
 

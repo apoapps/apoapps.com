@@ -6,53 +6,64 @@ import ProjectsCard from "@/components/ProjectsCard";
 import { Separator } from "@/components/ui/separator";
 
 export default function HomePageMobileView() {
-  const [scrollY, setScrollY] = useState(0);
+  // Estado para animación inicial (teléfono y texto)
   const [startAnim, setStartAnim] = useState(false);
+  // Estado para manejar el scroll (para el blur)
+  const [scrollY, setScrollY] = useState(0);
 
-  // Para hacer scroll a la sección "popular-projects"
+  // Activamos la animación inicial al montar
+  useEffect(() => {
+    const timer = setTimeout(() => setStartAnim(true), 200);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Escuchamos el scroll para calcular blur
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Botón "Learn More" → scroll hasta "popular-projects"
   const scrollToProjects = () => {
     document
       .getElementById("popular-projects")
       ?.scrollIntoView({ behavior: "smooth" });
   };
 
-  useEffect(() => {
-    // Animación inicial leve
-    const timer = setTimeout(() => setStartAnim(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
+  // --- Animación Celular ---
+  // Empieza en -100px → a 0px cuando startAnim es true
+  const phoneTransform = startAnim ? "translateY(0px)" : "translateY(-10px)";
 
-  useEffect(() => {
-    // Manejar scroll
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // Blur inicial pronto (scroll * 0.15), máx 30
+  const maxBlur = 5;
+  const blurVal = Math.min((scrollY + 0.5) * 3, maxBlur).toFixed(0);
+  const phoneBlur = `blur(${blurVal}px)`;
 
-  // Parallax y blur
-  const parallaxSpeed = 0.22;
-  const blurSpeed = 0.02;
-
-  // Posición final en Y
-  const finalPhoneTranslate = `${scrollY * parallaxSpeed}px`;
-
-  // Animación inicial: parte en -100px, luego pasa a finalPhoneTranslate
-  const animatedTranslate = startAnim ? finalPhoneTranslate : "-100px";
-
-  const blurAmount = (scrollY * blurSpeed).toFixed(1);
-  const phoneBlur = `blur(${blurAmount}px)`;
+  // --- Animación Texto ---
+  // Empieza en +100px → a 0px
+  // Ajusta a tu gusto (aún más si quieres un efecto mayor)
+  const textTransform = startAnim ? "translateY(-300px)" : "translateY(-200px)";
 
   return (
     <main className="space-y-10">
       {/* Hero / Intro Block */}
-      <section className="relative container mx-auto px-4 py-8">
+      <section className="container h-170 bg-[#0a0e1a]  mx-auto px-4 py-8 bg-black dark:bg-black">
+        {/* Contenedor principal con flex-col-reverse
+            para que el texto quede sobre (arriba en el DOM) */}
         <div className="flex flex-col-reverse items-center gap-8">
-          {/* Texto */}
-          <div className="w-full space-y-4 relative z-10">
-            <h1 className="text-4xl font-extrabold leading-tight">
+          {/* Texto animado */}
+          <div
+            className="w-full space-y-4 z-10 text-left px-4"
+            style={{
+              transition: "transform 1s ease-out",
+              transform: textTransform,
+            }}
+          >
+            <h1 className="text-4xl font-extrabold leading-tight text-white text-left">
               Bringing Ideas To Life
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground text-white">
               At Apoapps, we build solutions that empower thousands of students
               and improve their daily lives around the world.
             </p>
@@ -64,16 +75,26 @@ export default function HomePageMobileView() {
             </button>
           </div>
 
-          {/* iPhone con parallax/blur */}
+          {/* Celular animado + blur */}
           <div
-            className="w-full flex justify-center overflow-hidden relative z-0"
+            className="w-full flex justify-center overflow-hidden z-0"
             style={{
-              transition: "transform 0.8s ease-out",
-              transform: `translateY(${animatedTranslate})`,
+              transition: "transform 1s ease-out",
+              transform: phoneTransform,
               filter: phoneBlur,
             }}
           >
-            <StackedMockup />
+            <StackedMockup
+              screenshots={[
+                "/trigo-ss1.jpeg",
+                "/ss1.PNG",
+                "/ss2.PNG",
+                "/ss3.PNG",
+                "/ss4.PNG",
+
+
+              ]}
+            />
           </div>
         </div>
       </section>
