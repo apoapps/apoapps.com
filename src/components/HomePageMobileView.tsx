@@ -9,7 +9,7 @@ export default function HomePageMobileView() {
   // Estado para animación inicial (teléfono y texto)
   const [startAnim, setStartAnim] = useState(false);
   // Estado para manejar el scroll (para el blur)
-  const [scrollY, setScrollY] = useState(0);
+  //const [scrollY, setScrollY] = useState(0);
 
   // Altura del navbar (ajústalo según el tamaño real del navbar)
   const NAVBAR_HEIGHT = 60;
@@ -21,11 +21,11 @@ export default function HomePageMobileView() {
   }, []);
 
   // Escuchamos el scroll para calcular blur
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // useEffect(() => {
+  //   const handleScroll = () => setScrollY(window.scrollY);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   // Botón "Learn More" → scroll hasta "popular-projects"
   const scrollToProjects = () => {
