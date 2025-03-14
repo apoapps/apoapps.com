@@ -21,13 +21,13 @@ export default function ProjectsCard({ title, description, imageSrc, iosLink, an
   }, []);
 
   const getDownloadLink = () => {
-    if (os === "iOS" && iosLink) {
+    if (os === "ios" || os === "MacOS" && iosLink) {
       return <a href={iosLink} target="_blank" rel="noopener noreferrer" className="px-3 py-1 rounded-lg bg-secondary text-secondary-foreground">Download for iOS</a>;
     }
-    if (os === "Android" && androidLink) {
+    if (os === "android"  && androidLink) {
       return <a href={androidLink} target="_blank" rel="noopener noreferrer" className="px-3 py-1 rounded-lg bg-secondary text-secondary-foreground">Download for Android</a>;
     }
-    return <p className="text-sm text-muted-foreground">No disponible en tu plataforma</p>;
+    return <p className="text-sm text-muted-foreground">No disponible en tu plataforma ({os })</p>;
   };
 
   return (
