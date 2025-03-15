@@ -4,6 +4,7 @@ import { routing } from "@/i18n/routing";
 import { Navbar } from "@/components/Navbar";
 import "@/app/[locale]/globals.css"; // Tu CSS global
 import { ThemeProvider } from "@/components/theme-provider";
+import { Analytics } from "@vercel/analytics/react"
 
 export default async function LocaleLayout({
   children,
@@ -19,7 +20,10 @@ export default async function LocaleLayout({
 
   return (
     <html lang={params.locale} suppressHydrationWarning>
-      <head />
+      <head   >
+        <title>Apoapps</title>
+        <Analytics />
+      </head>
       <body className="bg-background text-foreground">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <NextIntlClientProvider locale={params.locale}>
