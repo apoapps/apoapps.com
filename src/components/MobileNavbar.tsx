@@ -12,6 +12,7 @@ import {
 import { useState } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
+import LangToggle from "./LangToggle";
 
 function MobileNavbar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -24,6 +25,7 @@ function MobileNavbar() {
 
   return (
     <div className="flex md:hidden items-center space-x-2">
+      <LangToggle />
       {/* Botón para cambiar de tema */}
       <Button
         variant="ghost"

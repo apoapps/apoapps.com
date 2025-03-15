@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { FileText, Github, Linkedin, MessageSquare, Send, Youtube } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -14,6 +15,7 @@ import { Separator } from "@/components/ui/separator";
 
 export default function AboutMeCard() {
   const [age, setAge] = useState(0);
+  const t = useTranslations("about");
 
   useEffect(() => {
     const birthDate = new Date(2004, 6, 26);
@@ -43,7 +45,7 @@ export default function AboutMeCard() {
               >
                 <Image
                   src="/apodaca.jpeg"
-                  alt="Alejandro Apodaca Córdova"
+                  alt={t("name")}
                   fill
                   className="object-contain"
                   priority
@@ -56,13 +58,13 @@ export default function AboutMeCard() {
                 transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
                 className="will-change-transform"
               >
-                <h1 className="text-2xl font-bold">Alejandro Apodaca Córdova</h1>
+                <h1 className="text-2xl font-bold">{t("name")}</h1>
                 <div className="flex items-center justify-center gap-2 mt-2">
                   <Badge variant="secondary" className="text-sm font-medium">
-                    Software Developer
+                    {t("role")}
                   </Badge>
                   <Badge variant="outline" className="text-sm">
-                    {age} years
+                    {age} {t("years_old")}
                   </Badge>
                 </div>
 
@@ -72,7 +74,7 @@ export default function AboutMeCard() {
                       href="https://docs.google.com/document/d/1EpRiiUTYgPA0Vl5XLj0DhceHBYDIbF0OdtQxr4ZwRpw/edit?usp=sharing"
                       target="_blank"
                     >
-                      <FileText className="w-4 h-4 mr-2" /> Download CV
+                      <FileText className="w-4 h-4 mr-2" /> {t("download_cv")}
                     </Link>
                   </Button>
                 </div>
@@ -83,41 +85,35 @@ export default function AboutMeCard() {
             <div className="col-span-1 md:col-span-2 p-6 md:p-8">
               <Tabs defaultValue="about" className="w-full">
                 <TabsList className="grid w-full grid-cols-2 mb-6">
-                  <TabsTrigger value="about">About Me</TabsTrigger>
-                  <TabsTrigger value="contact">Contact</TabsTrigger>
+                  <TabsTrigger value="about">{t("title")}</TabsTrigger>
+                  <TabsTrigger value="contact">{t("contact.title")}</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="about">
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-                    <h2 className="text-xl font-semibold mb-3">About me</h2>
-                    <p className="text-muted-foreground leading-relaxed">
-                      University student in Mechatronics Engineering with a solid background in programming.
-                      Self-taught, with experience in science projects and competitions. Passionate about learning and
-                      applying new technologies efficiently.
-                    </p>
+                    <h2 className="text-xl font-semibold mb-3">{t("title")}</h2>
+                    <p className="text-muted-foreground leading-relaxed">{t("bio")}</p>
 
                     <Separator className="my-4" />
 
-                    <h3 className="font-medium mb-2">Achievements</h3>
-                    <p className="text-muted-foreground">
-                      Developed three successful applications that have helped thousands of students worldwide.
-                    </p>
+                    <h3 className="font-medium mb-2">{t("achievements_title")}</h3>
+                    <p className="text-muted-foreground">{t("achievements")}</p>
 
                     <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-2">
-                      <Badge variant="secondary">Mechatronics</Badge>
-                      <Badge variant="secondary">Programming</Badge>
-                      <Badge variant="secondary">Self-taught</Badge>
-                      <Badge variant="secondary">Problem Solver</Badge>
-                      <Badge variant="secondary">Innovation</Badge>
-                      <Badge variant="secondary">Technology</Badge>
+                      <Badge variant="secondary">{t("skills.mechatronics")}</Badge>
+                      <Badge variant="secondary">{t("skills.programming")}</Badge>
+                      <Badge variant="secondary">{t("skills.self_taught")}</Badge>
+                      <Badge variant="secondary">{t("skills.problem_solver")}</Badge>
+                      <Badge variant="secondary">{t("skills.innovation")}</Badge>
+                      <Badge variant="secondary">{t("skills.technology")}</Badge>
                     </div>
                   </motion.div>
                 </TabsContent>
 
                 <TabsContent value="contact">
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="grid gap-4">
-                    <h2 className="text-xl font-semibold mb-3">Get in touch</h2>
-                    <p className="text-muted-foreground mb-4">Feel free to reach out through any of these platforms:</p>
+                    <h2 className="text-xl font-semibold mb-3">{t("contact.title")}</h2>
+                    <p className="text-muted-foreground mb-4">{t("contact.description")}</p>
 
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                       <Button asChild variant="outline" size="sm">

@@ -1,7 +1,7 @@
-// src/components/ProjectsCard.tsx
 "use client";
 
 import { useEffect, useState, MouseEvent } from "react";
+import { useTranslations } from "next-intl";
 import {
   Card,
   CardContent,
@@ -32,10 +32,15 @@ export default function ProjectsCard({
   androidLink,
   images = [],
 }: ProjectsCardProps) {
-  // Detecta SO y maneja estado de expansión
+  // Hooks de estado
   const [os, setOs] = useState<string>("");
   const [expanded, setExpanded] = useState<boolean>(false);
 
+  // Traducciones
+  const tAvailability = useTranslations("projects.availability");
+  const tButtons = useTranslations("buttons");
+
+  // Detecta el SO
   useEffect(() => {
     setOs(detectOS());
   }, []);
@@ -56,10 +61,8 @@ export default function ProjectsCard({
   function handleCardClick() {
     const link = getPlatformLink();
     if (link) {
-      // Abre el enlace en una nueva pestaña
       window.open(link, "_blank");
     } else {
-      // Si no está disponible en el SO del usuario, expandir para ver detalles
       setExpanded(true);
     }
   }
@@ -76,16 +79,14 @@ export default function ProjectsCard({
   return (
     <Card
       onClick={handleCardClick}
-      // Añadimos "self-start" para evitar que otro contenedor estire la altura.
       className={`
         self-start relative rounded-4xl border border-border bg-card
         shadow-sm transition hover:bg-muted cursor-pointer
       `}
     >
       <CardHeader>
-        {/* Encabezado: imagen + título, uno al lado del otro */}
+        {/* Encabezado: imagen + título */}
         <div className="flex items-center gap-3">
-          {/* Imagen principal (logo) redondeada */}
           <Image
             src={imageSrc}
             alt={title}
@@ -94,36 +95,29 @@ export default function ProjectsCard({
             className="rounded-full"
           />
           <div>
-            {/* Título más grande */}
             <CardTitle className="text-xl mb-1">{title}</CardTitle>
-            {/* Descripción corta siempre visible */}
-            <CardDescription className="mt-2">
-              {shortDescription}
-            </CardDescription>
+            <CardDescription className="mt-2">{shortDescription}</CardDescription>
           </div>
         </div>
       </CardHeader>
 
-      {/* Parte siempre visible (ej. plataformas disponibles) */}
+      {/* Plataformas disponibles */}
       <CardContent className="pb-8">
         {availablePlatforms.length > 0 ? (
           <p className="text-sm text-muted-foreground">
-            Disponible en: {availablePlatforms.join(" & ")}
+            {tAvailability("available_on")} {availablePlatforms.join(" & ")}
           </p>
         ) : (
           <p className="text-sm text-muted-foreground">
-            Actualmente no hay plataformas disponibles
+            {tAvailability("no_platforms")}
           </p>
         )}
       </CardContent>
 
-      {/* Botón para expandir/colapsar en la esquina inferior derecha */}
+      {/* Botón de expandir/colapsar */}
       <button
         onClick={toggleExpand}
-        className="
-          absolute bottom-4 right-4 p-2 bg-background
-          rounded-full shadow-md hover:opacity-80
-        "
+        className="absolute bottom-4 right-4 p-2 bg-background rounded-full shadow-md hover:opacity-80"
       >
         {expanded ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
       </button>
@@ -131,18 +125,17 @@ export default function ProjectsCard({
       {/* Sección expandida */}
       {expanded && (
         <div className="px-6 pb-6 text-sm text-muted-foreground space-y-4">
-          {/* Indicar si está disponible o no en la plataforma actual */}
           {isSupportedPlatform ? (
             <p>
-              App disponible para tu plataforma actual (<strong>{os}</strong>).
+              {tAvailability("supported_platform")} (<strong>{os}</strong>)
             </p>
           ) : (
             <p>
-              <strong>No disponible</strong> en tu plataforma (<strong>{os}</strong>).
+              {tAvailability("unsupported_platform")} (<strong>{os}</strong>)
             </p>
           )}
 
-          {/* Muestra enlaces a todas las plataformas, si existen */}
+          {/* Enlaces a iOS y Android */}
           <div className="flex flex-col gap-2">
             {iosLink && (
               <a
@@ -154,7 +147,7 @@ export default function ProjectsCard({
                   text-secondary-foreground hover:opacity-90
                 "
               >
-                Descargar en iOS
+                {tButtons("download_ios")}
               </a>
             )}
             {androidLink && (
@@ -167,7 +160,7 @@ export default function ProjectsCard({
                   text-secondary-foreground hover:opacity-90
                 "
               >
-                Descargar en Android
+                {tButtons("download_android")}
               </a>
             )}
           </div>
@@ -175,7 +168,7 @@ export default function ProjectsCard({
           {/* Descripción larga (opcional) */}
           {longDescription && <p className="text-justify">{longDescription}</p>}
 
-          {/* Mostrar imágenes extras, si existen */}
+          {/* Imágenes extra (opcional) */}
           {images.length > 0 && (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
               {images.map((src, idx) => (

@@ -1,0 +1,73 @@
+{
+  "about": {
+    "name": "Alejandro Apodaca Córdova",
+    "role": "Software Developer",
+    "years_old": "years old",
+    "download_cv": "Download CV",
+    "title": "About Me",
+    "bio": "University student in Mechatronics Engineering with a solid background in programming. Self-taught, with experience in science projects and competitions. Passionate about learning and applying new technologies efficiently.",
+    "achievements_title": "Achievements",
+    "achievements": "Developed three successful applications that have helped thousands of students worldwide.",
+    "skills": {
+      "mechatronics": "Mechatronics",
+      "programming": "Programming",
+      "self_taught": "Self-taught",
+      "problem_solver": "Problem Solver",
+      "innovation": "Innovation",
+      "technology": "Technology"
+    },
+    "contact": {
+      "title": "Get in touch",
+      "description": "Feel free to reach out through any of these platforms:"
+    }
+  },
+  "hero": {
+    "title": "Bringing Ideas To Life",
+    "description": "At Apoapps, we build solutions that empower thousands of students and improve their daily lives around the world.",
+    "learn_more": "Learn More"
+  },
+  "projects": {
+     "availability": {
+      "available_on": "Available on: ",
+      "no_platforms": "No platforms available",
+      "supported_platform": "App available for your current platform .",
+      "unsupported_platform": "Not available on your platform ."
+    },
+    "popular_projects": "Popular Projects",
+    "tri_go_math": {
+      "title": "Tri-Go Math",
+      "short_description": "Your all-in-one math toolkit",
+      "long_description": "Tri-Go Math is a powerful math tool that helps students solve equations, graph functions, and perform advanced calculations. Designed to make math easier and more accessible."
+    },
+    "wakeup": {
+      "title": "WakeUp",
+      "short_description": "Your personal sleep calculator",
+      "long_description": "WakeUp helps you optimize your sleep schedule by calculating the best sleep and wake-up times based on sleep cycles. Improve your rest and wake up refreshed."
+    },
+    "cetys_app": {
+      "title": "CETYS App",
+      "short_description": "Student portal and academic resources",
+      "long_description": "An all-in-one solution for CETYS students, providing access to schedules, grades, notifications, and more academic tools."
+    },
+    "cabildo_app": {
+      "title": "Cabildo Digital",
+      "short_description": "Official government participation app",
+      "long_description": "A digital platform that allows citizens to participate in government decisions, submit requests, and stay informed about city council matters."
+    }
+  },
+  "contact": {
+    "looking_for_solution": "Looking for a solution?",
+    "contact_us": "We can develop the right app or tool for you.",
+    "email": "Contact us at"
+  },
+  "navbar": {
+    "home": "Home",
+    "about": "About"
+  },
+  "buttons": {
+    "download_ios": "Download on iOS",
+    "download_android": "Download on Android",
+    "expand_details": "Expand Details",
+    "collapse_details": "Collapse Details"
+  }
+}

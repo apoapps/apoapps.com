@@ -1,0 +1,73 @@
+{
+  "about": {
+    "name": "Alejandro Apodaca Córdova",
+    "role": "Desarrollador de Software",
+    "years_old": "años",
+    "download_cv": "Descargar CV",
+    "title": "Sobre mí",
+    "bio": "Estudiante universitario de Ingeniería en Mecatrónica con una sólida formación en programación. Autodidacta, con experiencia en proyectos científicos y competencias. Apasionado por aprender y aplicar nuevas tecnologías de manera eficiente.",
+    "achievements_title": "Logros",
+    "achievements": "Ha desarrollado tres aplicaciones exitosas que han ayudado a miles de estudiantes en todo el mundo.",
+    "skills": {
+      "mechatronics": "Mecatrónica",
+      "programming": "Programación",
+      "self_taught": "Autodidacta",
+      "problem_solver": "Resolución de problemas",
+      "innovation": "Innovación",
+      "technology": "Tecnología"
+    },
+    "contact": {
+      "title": "Contáctame",
+      "description": "No dudes en comunicarte a través de cualquiera de estas plataformas:"
+    }
+  },
+  "hero": {
+    "title": "Dando vida a las ideas",
+    "description": "En Apoapps, creamos soluciones que empoderan a miles de estudiantes y mejoran su vida diaria en todo el mundo.",
+    "learn_more": "Saber más"
+  },
+  "projects": {
+      "availability": {
+      "available_on": "Disponible en: ",
+      "no_platforms": "Actualmente no hay plataformas disponibles",
+      "supported_platform": "App disponible para tu plataforma actual .",
+      "unsupported_platform": "No disponible en tu plataforma )."
+    },
+    "popular_projects": "Proyectos populares",
+    "tri_go_math": {
+      "title": "Tri-Go Math",
+      "short_description": "Tu herramienta matemática todo en uno",
+      "long_description": "Tri-Go Math es una herramienta matemática potente que ayuda a los estudiantes a resolver ecuaciones, graficar funciones y realizar cálculos avanzados. Diseñada para hacer las matemáticas más fáciles y accesibles."
+    },
+    "wakeup": {
+      "title": "WakeUp",
+      "short_description": "Tu calculadora personal de sueño",
+      "long_description": "WakeUp te ayuda a optimizar tu horario de sueño calculando los mejores momentos para dormir y despertar según los ciclos del sueño. Mejora tu descanso y despierta renovado."
+    },
+    "cetys_app": {
+      "title": "CETYS App",
+      "short_description": "Portal estudiantil y recursos académicos",
+      "long_description": "Una solución todo-en-uno para estudiantes de CETYS, proporcionando acceso a horarios, calificaciones, notificaciones y más herramientas académicas."
+    },
+    "cabildo_app": {
+      "title": "Cabildo Digital",
+      "short_description": "Aplicación oficial de participación ciudadana",
+      "long_description": "Una plataforma digital que permite a los ciudadanos participar en las decisiones del gobierno, enviar solicitudes y mantenerse informados sobre los asuntos del ayuntamiento."
+    }
+  },
+  "contact": {
+    "looking_for_solution": "¿Buscas una solución?",
+    "contact_us": "Podemos desarrollar la aplicación o herramienta adecuada para ti.",
+    "email": "Contáctanos en"
+  },
+  "navbar": {
+    "home": "Inicio",
+    "about": "Acerca de"
+  },
+  "buttons": {
+    "download_ios": "Descargar en iOS",
+    "download_android": "Descargar en Android",
+    "expand_details": "Ver más detalles",
+    "collapse_details": "Ver menos detalles"
+  }
+}

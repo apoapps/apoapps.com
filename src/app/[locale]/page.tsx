@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import HomePageMobileView from "../components/HomePageMobileView";
-import HomePageDesktopView from "../components/HomePageDesktopView";
+import HomePageMobileView from "../../components/HomePageMobileView";
+import HomePageDesktopView from "../../components/HomePageDesktopView";
 
 export default function HomePage() {
   const [isMobile, setIsMobile] = useState(false);
