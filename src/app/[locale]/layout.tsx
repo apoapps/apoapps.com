@@ -41,6 +41,9 @@ export default async function LocaleLayout({
       <head>
         {/* 🔹 SEO Básico */}
         <title>{pageTitle}</title>
+        <link rel="icon" type="image/png" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
         <meta name="description" content={pageDescription} />
         <meta name="keywords" content={keywords} />
         <meta name="author" content="Alejandro Apodaca Córdova" />
