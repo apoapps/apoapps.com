@@ -11,12 +11,14 @@ import {
 } from "@/components/ui/sheet";
 import { useState } from "react";
 import { useTheme } from "next-themes";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from 'next-intl';
 import LangToggle from "./LangToggle";
 
 function MobileNavbar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const { theme, setTheme } = useTheme();
+  const t = useTranslations('navbar');
 
   // Función para cerrar el menú cuando se hace clic en un enlace
   const handleCloseMenu = () => {
@@ -56,7 +58,7 @@ function MobileNavbar() {
               asChild
               onClick={handleCloseMenu}
             >
-              <Link href="/">Home</Link>
+              <Link href="/">{t('home')}</Link>
             </Button>
             <Button
               variant="outline"
@@ -64,7 +66,15 @@ function MobileNavbar() {
               asChild
               onClick={handleCloseMenu}
             >
-              <Link href="/about">About</Link>
+              <Link href="/about">{t('about')}</Link>
+            </Button>
+            <Button
+              variant="outline"
+              className="flex items-center gap-3 justify-start mx-6"
+              asChild
+              onClick={handleCloseMenu}
+            >
+              <Link href="/privacy">{t('privacy')}</Link>
             </Button>
           </nav>
         </SheetContent>

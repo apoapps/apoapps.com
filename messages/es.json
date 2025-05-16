@@ -62,12 +62,31 @@
   },
   "navbar": {
     "home": "Inicio",
-    "about": "Acerca de"
+    "about": "Acerca de",
+    "privacy": "Política de Privacidad"
   },
   "buttons": {
     "download_ios": "Descargar en iOS",
     "download_android": "Descargar en Android",
     "expand_details": "Ver más detalles",
     "collapse_details": "Ver menos detalles"
+  },
+  "privacy": {
+    "title": "Política de Privacidad",
+    "introduction": "En Apoapps, estamos comprometidos con la protección de tu privacidad y con brindarte una experiencia segura mientras utilizas nuestras aplicaciones.",
+    "audience": "Nuestras aplicaciones están diseñadas para mejorar la vida diaria y con fines educativos, dirigidas específicamente a estudiantes de secundaria, preparatoria y estudiantes universitarios de ingeniería. Nuestras aplicaciones no están dirigidas a niños menores de 13 años.",
+    "data_collection": {
+      "title": "Información que Recopilamos",
+      "description": "Podemos recopilar la información mínima necesaria para proporcionar nuestros servicios, como información del dispositivo, datos de uso de la aplicación e información que proporcionas voluntariamente. No vendemos tu información personal a terceros."
+    },
+    "data_usage": {
+      "title": "Cómo Utilizamos tu Información",
+      "description": "La información que recopilamos se utiliza para mejorar nuestras aplicaciones, proporcionar soporte y mejorar la experiencia del usuario. Implementamos medidas de seguridad razonables para proteger tu información."
+    },
+    "contact_info": {
+      "title": "Contáctanos",
+      "description": "Si tienes alguna pregunta sobre nuestra Política de Privacidad, contáctanos en:"
+    },
+    "last_updated": "Última actualización: Mayo 2024"
   }
 }

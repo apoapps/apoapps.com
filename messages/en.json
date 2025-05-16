@@ -62,12 +62,31 @@
   },
   "navbar": {
     "home": "Home",
-    "about": "About"
+    "about": "About",
+    "privacy": "Privacy Policy"
   },
   "buttons": {
     "download_ios": "Download on iOS",
     "download_android": "Download on Android",
     "expand_details": "Expand Details",
     "collapse_details": "Collapse Details"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "introduction": "At Apoapps, we are committed to protecting your privacy and providing you with a safe and secure experience while using our applications.",
+    "audience": "Our applications are designed for daily life improvement and educational purposes, specifically targeting secondary school students, high school students, and university engineering students. Our applications are not directed to children under the age of 13.",
+    "data_collection": {
+      "title": "Information We Collect",
+      "description": "We may collect minimal information necessary to provide our services, such as device information, application usage data, and information you voluntarily provide. We do not sell your personal information to third parties."
+    },
+    "data_usage": {
+      "title": "How We Use Your Information",
+      "description": "The information we collect is used to improve our applications, provide support, and enhance user experience. We implement reasonable security measures to protect your information."
+    },
+    "contact_info": {
+      "title": "Contact Us",
+      "description": "If you have any questions about our Privacy Policy, please contact us at:"
+    },
+    "last_updated": "Last Updated: May 2024"
   }
 }

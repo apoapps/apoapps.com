@@ -11,15 +11,17 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
+
   // Asegurar que el locale sea válido
-  if (!hasLocale(routing.locales, params.locale)) {
+  if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
 
   // 🌎 Definir textos según el idioma actual
-  const isEnglish = params.locale === "en";
+  const isEnglish = locale === "en";
 
   const pageTitle = isEnglish
     ? "Alejandro Apodaca - Software Developer"
@@ -33,57 +35,40 @@ export default async function LocaleLayout({
     ? "Alejandro Apodaca, Apoapps, software developer, Tri-Go Math, WakeUp, educational apps, mobile development, programming tips, study problems, sleep tracking, Cabildo Digital, React, Next.js, iOS, Android"
     : "Alejandro Apodaca, Apoapps, desarrollador de software, Tri-Go Math, WakeUp, apps educativas, desarrollo móvil, consejos de programación, problemas estudiando, seguimiento de sueño, Cabildo Digital, React, Next.js, iOS, Android";
 
-  const pageUrl = `https://apoapps.net/${params.locale}`;
-  const imageUrl = "./preview.png"; // Ajusta la imagen de previsualización
+  const pageUrl = `https://apoapps.net/${locale}`;
+  const imageUrl = "./preview.png";
 
   return (
-    <html lang={params.locale} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
-        {/* 🔹 SEO Básico */}
+
         <title>{pageTitle}</title>
-        <link rel="icon" type="image/png" href="/favicon.ico" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicon.ico" />
         <meta name="description" content={pageDescription} />
         <meta name="keywords" content={keywords} />
         <meta name="author" content="Alejandro Apodaca Córdova" />
         <meta name="robots" content="index, follow" />
-
-        {/* 🔹 URLs alternas para SEO multilingüe */}
+        <link rel="icon" type="image/png" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="alternate" href="https://apoapps.net/en" hrefLang="en" />
         <link rel="alternate" href="https://apoapps.net/es" hrefLang="es" />
         <link rel="alternate" href="https://apoapps.net/" hrefLang="x-default" />
-
-        {/* 🔹 URL Canonical (Evita contenido duplicado) */}
         <link rel="canonical" href={pageUrl} />
-
-        {/* 🔹 Favicon */}
-        <link rel="icon" href="/favicon.ico" />
-
-        {/* 🔹 Open Graph para Facebook, LinkedIn, WhatsApp */}
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={pageUrl} />
         <meta property="og:image" content={imageUrl} />
         <meta property="og:site_name" content="Apoapps" />
-
-        {/* 🔹 Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={imageUrl} />
-        <meta name="twitter:site" content="@apoapps" /> {/* Ajusta tu @ si tienes Twitter */}
-
-        {/* 🔹 Enlaces a redes sociales */}
+        <meta name="twitter:site" content="@apoapps" />
         <link rel="me" href="https://www.linkedin.com/in/alejandro-apodaca-cordova-502a2b200/" />
         <link rel="me" href="https://github.com/apoapps" />
         <link rel="me" href="https://www.youtube.com/channel/UC-LPXAK9zMiCOCWMZiO23tA" />
         <link rel="me" href="https://t.me/alexapo26" />
         <link rel="me" href="https://vm.tiktok.com/ZMJwQcnad/" />
-
-        {/* 🔹 Google Analytics */}
-        <Analytics />
       </head>
       <body className="bg-background text-foreground">
         <ThemeProvider
@@ -92,11 +77,12 @@ export default async function LocaleLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <NextIntlClientProvider locale={params.locale}>
+          <NextIntlClientProvider locale={locale}>
             <Navbar />
             <main>{children}</main>
           </NextIntlClientProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
